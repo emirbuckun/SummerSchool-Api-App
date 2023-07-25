@@ -3,6 +3,8 @@ using SummerSchool.Api.Entity;
 
 namespace SummerSchool.Api.Controllers
 {
+  [ApiController]
+  [Route("[controller]")]
   public class BookController : ControllerBase
   {
     private static readonly List<Book> _bookList = new()
@@ -52,5 +54,9 @@ namespace SummerSchool.Api.Controllers
       }
       return Ok();
     }
+
+    // null check
+    // post'da contains
+    // delete'de yoksa silmemeliyiz
   }
 }
