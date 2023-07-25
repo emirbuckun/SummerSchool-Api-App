@@ -9,9 +9,9 @@ namespace SummerSchool.Api.Controllers
   public class BookController : ControllerBase
   {
     private readonly BookHandler _handler;
-    public BookController()
+    public BookController(BookHandler handler)
     {
-      _handler = new BookHandler();
+      _handler = handler;
     }
 
     [HttpGet]
