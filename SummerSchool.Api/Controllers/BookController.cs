@@ -52,8 +52,7 @@ namespace SummerSchool.Api.Controllers
     [HttpDelete]
     public IActionResult Delete(int id)
     {
-      var result = _handler.DeleteBook(id);
-
+      bool result = _handler.DeleteBook(id);
       if (!result)
         return NotFound();
       else
