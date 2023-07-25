@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerSchool.Api", "SummerSchool.Api\SummerSchool.Api.csproj", "{80B61910-F848-40EB-B821-5A77410BB6DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SummerSchool.App", "SummerSchool.App\SummerSchool.App.csproj", "{FECF4C52-B9C3-4091-B87C-3162ECF70C44}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{80B61910-F848-40EB-B821-5A77410BB6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80B61910-F848-40EB-B821-5A77410BB6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80B61910-F848-40EB-B821-5A77410BB6DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FECF4C52-B9C3-4091-B87C-3162ECF70C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FECF4C52-B9C3-4091-B87C-3162ECF70C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FECF4C52-B9C3-4091-B87C-3162ECF70C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FECF4C52-B9C3-4091-B87C-3162ECF70C44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

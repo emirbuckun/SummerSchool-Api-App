@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SummerSchool.Api.Entity;
+using SummerSchool.App.Entity;
 
 namespace SummerSchool.Api.Controllers
 {
@@ -29,34 +29,72 @@ namespace SummerSchool.Api.Controllers
     }
 
     [HttpPost]
-    public IActionResult Post([FromBody] Book book)
+    public IActionResult Post([FromBody] Book request)
     {
-      if (book.Title is not null)
-        _bookList.Add(new Book(_bookList.Count + 1, book.Title));
-      return Ok();
+      if (IsValid(request))
+      {
+        if (request is not null && request.Title is not null)
+        {
+          var isExist = _bookList.SingleOrDefault(x => x.Title == request.Title);
+          if (isExist is not null)
+          {
+            _bookList.Add(new Book(_bookList.Count + 1, request.Title));
+            return Ok();
+          }
+          else
+          {
+            return Conflict();
+          }
+        }
+        else
+        {
+          return Conflict();
+        }
+      }
+      else
+      {
+        return BadRequest();
+      }
     }
 
     [HttpPut]
-    public IActionResult Put([FromBody] Book book)
+    public IActionResult Put([FromBody] Book request)
     {
-      Book? updateDepartment = _bookList.SingleOrDefault(x => x.Id == book.Id);
-      book.Title = book.Title;
-      return Ok();
+      var existingBook = _bookList.SingleOrDefault(x => x.Id == request.Id);
+      if (existingBook is not null)
+      {
+        existingBook = request;
+        return Ok();
+      }
+      else
+      {
+        return NotFound();
+      }
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
       Book? book = _bookList.SingleOrDefault(x => x.Id == id);
+
       if (book is not null)
       {
         _bookList.Remove(book);
+        return Ok();
       }
-      return Ok();
+      return NotFound();
     }
 
-    // null check
-    // post'da contains
-    // delete'de yoksa silmemeliyiz
+    private static bool IsValid(Book book)
+    {
+      if (string.IsNullOrEmpty(book.Title))
+      {
+        return false;
+      }
+      else
+      {
+        return true;
+      }
+    }
   }
 }
