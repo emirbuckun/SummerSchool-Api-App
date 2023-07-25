@@ -7,46 +7,46 @@ namespace SummerSchool.Api.Controllers
   [Route("[controller]")]
   public class DepartmentController : ControllerBase
   {
-    private static readonly List<Department> _departmentList = new() { new Department(1, "Computer Engineering"), new Department(2, "Math") };
+    private static readonly List<Department> _departmentList = new() { new Department(1, "Computer Enginering"), new Department(2, "Psychology") };
 
     public DepartmentController() { }
 
     [HttpGet]
     [Route("list")]
-    public IActionResult Get() { return Ok(_departmentList); }
+    public IActionResult Get()
+    {
+      return Ok(_departmentList);
+    }
 
     [HttpGet]
     public IActionResult Get(int id)
     {
-      var department = _departmentList.SingleOrDefault(x => x.Id == id);
-      return Ok(department);
+      return Ok(_departmentList.SingleOrDefault(x => x.Id == id));
     }
 
     [HttpPost]
-    public IActionResult Post(string departmentName)
+    public IActionResult Post([FromBody] Department department)
     {
-      _departmentList.Add(new Department(_departmentList.Count + 1, departmentName));
+      _departmentList.Add(new Department(_departmentList.Count + 1, department.Name));
       return Ok();
     }
 
     [HttpPut]
-    public IActionResult Put(string departmentName)
+    public IActionResult Put([FromBody] Department department)
     {
-      var department = _departmentList.SingleOrDefault(new Department(_departmentList.Count, departmentName));
-      _departmentList[department.Id] = new Department(department.Id, departmentName);
-      return Ok(_departmentList[department.Id]);
+      Department? updateDepartment = _departmentList.SingleOrDefault(x => x.Id == department.Id);
+      if (updateDepartment is not null)
+        department.Name = department.Name;
+      return Ok();
     }
 
     [HttpDelete]
     public IActionResult Delete(int id)
     {
       Department? department = _departmentList.SingleOrDefault(x => x.Id == id);
-      if (department != null && department.Id > 0)
-      {
+      if (department is not null)
         _departmentList.Remove(department);
-        return Ok();
-      }
-      else return NotFound();
+      return Ok();
     }
   }
 }
