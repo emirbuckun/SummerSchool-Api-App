@@ -1,4 +1,4 @@
-namespace SummerSchool.Api.Models
+namespace SummerSchool.Api.Entity
 {
   public class Department
   {

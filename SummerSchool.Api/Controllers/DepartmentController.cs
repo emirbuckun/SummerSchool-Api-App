@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using SummerSchool.Api.Models;
+using SummerSchool.Api.Entity;
 
 namespace SummerSchool.Api.Controllers
 {
