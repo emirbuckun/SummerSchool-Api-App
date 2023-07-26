@@ -1,4 +1,4 @@
-using SummerSchool.App.Database;
+using SummerSchool.App.Repository;
 using SummerSchool.App.Handler;
 
 var builder = WebApplication.CreateBuilder(args);

@@ -1,9 +1,12 @@
 namespace SummerSchool.App.Entity
 {
-  public class Book
+  public class Book : BaseEntity
   {
-    public int Id { get; set; }
     public string Title { get; set; }
+    public Book()
+    {
+      Title = "Empty";
+    }
     public Book(int id, string title)
     {
       Id = id;
