@@ -4,10 +4,7 @@ namespace SummerSchool.App.Repository
 {
     public class BookRepository : GenericRepository<Book>
     {
-        public BookRepository()
-        {
-            Seed();
-        }
+        public BookRepository() { }
 
         public Book? GetByTitle(string title)
         {
